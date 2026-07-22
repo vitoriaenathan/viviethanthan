@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nosso Amor ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ff4b91,#ff7eb3,#ffd6e8);
+overflow-x:hidden;
+color:white;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+header{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+animation:fade 2s;
+}
+
+h1{
+font-family:'Great Vibes',cursive;
+font-size:70px;
+margin-bottom:20px;
+text-shadow:0 0 20px rgba(255,255,255,.5);
+}
+
+.frase{
+font-size:24px;
+max-width:850px;
+line-height:1.8;
+font-weight:300;
+}
+
+.galeria{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+padding:60px;
+}
+
+.foto{
+overflow:hidden;
+border-radius:25px;
+box-shadow:0 15px 35px rgba(0,0,0,.3);
+transition:.5s;
+}
+
+.foto img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+transition:.6s;
+}
+
+.foto:hover{
+transform:translateY(-10px);
+}
+
+.foto:hover img{
+transform:scale(1.08);
+}
+
+.container-btn{
+display:flex;
+justify-content:center;
+padding:60px;
+}
+
+button{
+padding:18px 40px;
+font-size:20px;
+border:none;
+border-radius:50px;
+cursor:pointer;
+background:white;
+color:#ff2f75;
+font-weight:bold;
+transition:.4s;
+box-shadow:0 10px 25px rgba(0,0,0,.25);
+}
+
+button:hover{
+transform:scale(1.08);
+background:#ffe5ef;
+}
+
+.modal{
+position:fixed;
+inset:0;
+display:none;
+justify-content:center;
+align-items:center;
+background:rgba(0,0,0,.75);
+backdrop-filter:blur(6px);
+animation:fade .4s;
+}
+
+.caixa{
+background:white;
+color:#444;
+padding:40px;
+border-radius:25px;
+text-align:center;
+max-width:420px;
+width:90%;
+animation:subir .5s;
+}
+
+.caixa h2{
+color:#ff2f75;
+margin-bottom:20px;
+}
+
+.botoes{
+display:flex;
+justify-content:center;
+gap:20px;
+margin-top:25px;
+}
+
+.sim,.nao{
+padding:12px 30px;
+border-radius:40px;
+font-size:18px;
+cursor:pointer;
+border:none;
+}
+
+.sim{
+background:#ff2f75;
+color:white;
+}
+
+.nao{
+background:#ddd;
+}
+
+#mensagem{
+margin-top:25px;
+font-size:22px;
+color:#ff2f75;
+font-weight:bold;
+display:none;
+animation:fade .6s;
+}
+
+@keyframes fade{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+@keyframes subir{
+from{
+opacity:0;
+transform:translateY(50px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="canvas"></canvas>
+
+<header>
+
+<h1>Meu Amor ❤️</h1>
+
+<p class="frase">
+
+Desde que você entrou na minha vida, tudo ganhou mais cor, mais sentido e mais felicidade.
+Você transformou os meus dias comuns em momentos inesquecíveis e fez o meu coração descobrir um amor que eu nem imaginava existir.
+Não importa quantos dias passem, eu quero continuar escolhendo você todos os dias da minha vida.
+Porque o meu lugar favorito sempre será ao seu lado.
+
+</p>
+
+</header>
+
+<section class="galeria">
+
+<div class="foto"><img src=""></div>
+<div class="foto"><img src=""></div>
+<div class="foto"><img src=""></div>
+<div class="foto"><img src="f"></div>
+<div class="foto"><img src=""></div>
+
+</section>
+
+<div class="container-btn">
+<button onclick="abrir()">Clique aqui ❤️</button>
+</div>
+
+<div class="modal" id="modal">
+
+<div class="caixa">
+
+<h2>💍 Uma pergunta muito importante...</h2>
+
+<p>Você aceita namorar comigo? ❤️</p>
+
+<div class="botoes">
+
+<button class="sim" onclick="aceitou()">SIM ❤️</button>
+<button class="nao" id="nao">Não </button>
+
+</div>
+
+<div id="mensagem">
+
+❤️ Eu sabia que você diria SIM!<br><br>
+Prometo cuidar de você, fazer você sorrir todos os dias e te amar por toda a minha vida. ❤️
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+function abrir(){
+document.getElementById("modal").style.display="flex";
+}
+
+function aceitou(){
+document.getElementById("mensagem").style.display="block";
+}
+
+const nao=document.getElementById("nao");
+
+nao.addEventListener("mouseover",()=>{
+const x=Math.random()*300-150;
+const y=Math.random()*300-150;
+nao.style.transform=`translate(${x}px,${y}px)`;
+});
+
+// CORAÇÕES
+const canvas=document.getElementById("canvas");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let hearts=[];
+
+for(let i=0;i<60;i++){
+hearts.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+size:Math.random()*8+5,
+speed:Math.random()*1+0.5
+});
+}
+
+function draw(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="rgba(255,255,255,.7)";
+
+hearts.forEach(h=>{
+ctx.font=h.size+"px Arial";
+ctx.fillText("❤",h.x,h.y);
+
+h.y-=h.speed;
+
+if(h.y<-20){
+h.y=canvas.height+20;
+h.x=Math.random()*canvas.width;
+}
+});
+
+requestAnimationFrame(draw);
+}
+
+draw();
+
+window.onresize=()=>{
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+};
+</script>
+
+</body>
+</html>
